@@ -3,7 +3,7 @@ import { EmbedBuilder } from "discord.js";
 export default function trackEmbed(track: any): EmbedBuilder {
 
   const routes = track.processInfo.progressPointList.map((i: any) => (i.light ? "<:chickblush:1124752568170590358> <a:bouncyarrow1:1124752388352376962> " : "<:chicksleepy:1124765966795018250> <a:bouncyarrow:1124752391024152720> ") + i.pointName);
-  let time = (track.globalEtaInfo.deliveryMinTime === track.globalEtaInfo.deliveryMaxTime) ? `O produto será entrega **<t:${Math.floor(track.globalEtaInfo.deliveryMinTime / 1000)}:R>**` : `O produto será entrega **<t:${Math.floor(track.globalEtaInfo.deliveryMinTime / 1000)}:R>** (porém pode ser entregue **<t:${Math.floor(track.globalEtaInfo.deliveryMaxTime / 1000)}:R>**)`;
+  const time = track.globalEtaInfo && (track.globalEtaInfo.deliveryMinTime) ? `O produto será entrega **<t:${Math.floor(track.globalEtaInfo.deliveryMinTime / 1000)}:R>**` : 'Aguardando o **Correios Brasil** estimar o tempo de entrega.';
 
   return new EmbedBuilder()
     .setTitle(`<:happy:1124751753028587611> Resultado do código: ${track.mailNo}`)

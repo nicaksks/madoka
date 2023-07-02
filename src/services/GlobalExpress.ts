@@ -19,9 +19,13 @@ export default class GlobalExpress {
   }
 
   async get() {
-    const { data } = await this._instance.get(`/detail.json?mailNos=${this._code}&lang=pt-BR&language=pt-BR`);
-    const { module } = data;
-    return module[0];
+    try {
+      const { data } = await this._instance.get(`/detail.json?mailNos=${this._code}&lang=pt-BR&language=pt-BR`);
+      const { module } = data;
+      return module[0];
+    } catch (e) {
+      throw new Error('Ocorreu um erro.');
+    }
   }
 
 }

@@ -10,5 +10,5 @@ const client = new Client({
   ]
 })
 
-client.login(process.env.TOKEN)
+client.login(process.env.TOKENN)
   .then(() => events(client));
