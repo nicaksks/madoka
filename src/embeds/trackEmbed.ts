@@ -10,7 +10,7 @@ export default function trackEmbed(track: any): EmbedBuilder {
     .setDescription(`
   Origem: **${track.originCountry}**, Destino: **${track.destCountry}** 
   Duranção da viagem até o momento **${track.daysNumber}** 
-  Status: **${track.status}** <:chicksprout:1124751750549753998>
+  Status: **${track.statusDesc}** <:chicksprout:1124751750549753998>
   
   **PROGRESSO** <a:loading_spinner_teal:1124751255768666263>
   **${routes.join(' ')}**
