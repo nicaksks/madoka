@@ -4,6 +4,7 @@ import trackEmbed from "../embeds/trackEmbed";
 import GlobalExpress from "../services/GlobalExpress";
 
 let status = false;
+let destinyStatus = false;
 
 export default async function track(code: string, mentionId: string, message: any) {
 
@@ -25,6 +26,9 @@ function trackRoute(destiny: string[], message: any, mentionId: string) {
   if (destiny.includes('Entregue')) {
     message.edit({ content: `${mentionId} seu produto já foi entregue a você. O sistema será finalizado. \nCaso queira adicionar mais código de rastreamento vá até **src > utils > constants > code**`, embeds: [], components: [] })
       .then(() => process.exit(1));
+  } else if (destiny.includes('Destino') && !destinyStatus) {
+    destinyStatus = true;
+    return message.reply({ content: `${mentionId} seu produto está sendo levado a sua residência.` });
   } else if (destiny.includes('Brasil') && !status) {
     status = true;
     return message.reply(`${mentionId} seu produto está no **Brasil**!`);
