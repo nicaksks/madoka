@@ -1,7 +1,8 @@
+import { Client } from 'discord.js';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-export default function events(client: any) {
+export default function events(client: Client) {
 	const eventsPath = join(__dirname, 'events');
 	const eventFiles = readdirSync(eventsPath).filter(file => file.endsWith('.js') || file.endsWith('.ts'));
 
